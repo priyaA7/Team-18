@@ -3,90 +3,28 @@
 <html>
 
 <head>
+<title>Location and Destination Input</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <title>Location and Destination Input</title>
-
-    <style>
-
-         {
-
-            font-family: Arial, Helvetica;
-
-        }
-
-
-
-        input {
-
-            top: 5%;
-
-            width: 200px;
-
-            height: 30px;
-
-            left: 10px;
-
-            font-size: 20px;
-
-            padding-left: 30px;
-            
-            border: solid;
-            
-            border-width: 0.1px;
-            
-            border-color: #5F9EA0;
-            
-            background-color:#F9FDFE;
-
-        }
-
-      button {
-        
-            position: absolute;
-
-            top: 1.5%;
-            
-            left: 175px;
-            
-            background-color: #F9FDFE;
-
-            border: none;
-
-            cursor: pointer;
-
-            font-size: 15px;
-
-            padding:4px 7px;
-            
-
-        }
-        
-        body {
-          
-            background-color: #61D5FE ;            
-
-        }
-
-
-
-
-
-    </style>
-
+<link rel='stylesheet' type='text/css' href='css/searchstyle.css'>
 </head>
 </body>
 
 
 <form class="searchlocation" action="action_page.php">
-  <input type="text" placeholder="Input Location" name="search">
+  <input id="searchResult2" type="text" placeholder="Entered Input" name="search">
   <button type="search"><i class="fa fa-search"></i></button>
-  
 </form> 
 
 <form class="searchdestination">
   <input type="text" placeholder="Destination" name="search">
 </form> 
+
+<script>
+  let urlString = window.location.href;
+  let searchUrl = new URL(urlString);
+  let dest = searchUrl.searchParams.get("destination");
+  document.getElementById("searchResult2").value = dest;
+</script>
 
 
 

@@ -2,51 +2,14 @@
 <html>
 <head>
     <title>Pedals</title>
-    <style>
-        button, p, input, img, button {
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            position: absolute;
-        }
-
-        input {
-            top: 50%;
-            width: 1028px;
-            height: 107px;
-            left: 198px;
-            font-size: 64px;
-            padding-left: 30px;
-        }
-
-        p { 
-            top: 22.5px;
-            left: 500px;
-            width: 466px;
-            height: 87px;
-            font-size: 144px;
-            color: white;
-            -webkit-text-stroke: 0.5px black;
-        }
-
-        body {
-            background-size: cover;
-        }
-
-        button {
-            left: 665px;
-            top: 70%;
-            border: none;
-            color: rgb(114, 114, 114);
-            cursor: pointer;
-            font-size: 16px;
-            padding: 15px 32px;
-        }
-
-    </style>
+    <link rel='stylesheet' type='text/css' href='css/indexstyle.css'>
 </head>
 
-<body background="background.jpg">
+<body>
     <p>Pedals</p>
-    <input type="text" placeholder="Where do you want to go?">
-    <button>Search</button>
+    <form action="search.html" method="GET">
+        <input id="searchBar" type="text" name="destination" placeholder="Where do you want to go?"/>
+        <input id="searchButton"type="submit" value="Search"/>
+    </form>
 </body>
 </html>
