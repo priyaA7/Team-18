@@ -15,7 +15,7 @@
 </body>
 
 
-<form class="searchlocation" action="action_page.php">
+<form class="searchlocation" action="search.html">
   <input id="searchResult2" type="text" placeholder="Entered Input" name="search">
   <button type="search"><i class="fa fa-search"></i></button>
 </form> 
@@ -27,10 +27,14 @@
 <div id="map"></div>
 
 <script>
+  function titleCase(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+  }
+
   let urlString = window.location.href;
   let searchUrl = new URL(urlString);
   let dest = searchUrl.searchParams.get("destination");
-  document.getElementById("searchResult2").value = dest;
+  document.getElementById("searchResult2").value = titleCase(dest);
 </script>
 
 <script>
