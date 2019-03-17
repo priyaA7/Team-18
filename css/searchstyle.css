@@ -32,3 +32,11 @@ button {
 body {
     background-color: #61D5FE;
 }
+
+#map {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 885px;
+    height: 100%;
+}
