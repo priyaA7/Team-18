@@ -12,16 +12,16 @@
 <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 
 </head>
-</body>
+<body id="bodyinfo">
 
 
 <form class="searchlocation" action="search.html">
-  <input id="searchResult2" type="text" placeholder="Entered Input" name="search">
-  <button type="search"><i class="fa fa-search"></i></button>
+  <input id="searchResult2" type="text" placeholder="Enter Location" name="search">
+  <button id="searchLogo"type="search"><i class="fa fa-search"></i></button>
 </form> 
 
 <form class="searchdestination">
-  <input type="text" placeholder="Destination" name="search">
+  <input id="enteredDest" type="text" placeholder="Destination" name="search">
 </form> 
 
 <div id="map"></div>
@@ -34,7 +34,7 @@
   let urlString = window.location.href;
   let searchUrl = new URL(urlString);
   let dest = searchUrl.searchParams.get("destination");
-  document.getElementById("searchResult2").value = titleCase(dest);
+  document.getElementById("enteredDest").value = titleCase(dest);
 </script>
 
 <script>

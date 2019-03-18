@@ -1,11 +1,10 @@
-body {
-
+#bodyinfo {
   font-family: Arial, Helvetica;
-
+  background-color: #61D5FE;
 }
 
 
-input {
+#enteredDest, #searchResult2 {
     top: 5%;
     width: 200px;
     height: 30px;
@@ -18,7 +17,7 @@ input {
     background-color:#F9FDFE;
 }
 
-button {
+#searchLogo {
     position: absolute;
     top: 1.5%;
     left: 175px;
@@ -27,10 +26,6 @@ button {
     cursor: pointer;
     font-size: 15px;
     padding:4px 7px;
-}
-
-body {
-    background-color: #61D5FE;
 }
 
 #map {
