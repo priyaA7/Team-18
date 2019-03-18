@@ -91,7 +91,7 @@
 
 <form id='form1' class="searchlocation" action="search.html" >
   <input type="text" id='input1' placeholder="Input Location" name="location">
-  <button type="search"><i class="fa fa-search"></i></button>
+  <button type="search" onclick="store()"><i class="fa fa-search"></i></button>
   
 </form> 
 
@@ -102,6 +102,11 @@
 
 
 <script>
+
+function store() {
+  let location = document.getElementById('input1').value
+  let destination = document.getElementById('input2').value
+}
 
 
 function flipper() {
