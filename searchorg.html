@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<title>Location and Destination Input</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel='stylesheet' type='text/css' href='css/searchstyle.css'>
+
+<!--Map Source-->
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+
+</head>
+<body id="bodyinfo">
+
+
+<form class="searchlocation" action="search.html">
+  <input id="searchResult2" type="text" placeholder="Enter Location" name="search">
+  <button id="searchLogo"type="search"><i class="fa fa-search"></i></button>
+</form> 
+
+<form class="searchdestination">
+  <input id="enteredDest" type="text" placeholder="Destination" name="search">
+</form> 
+
+<div id="map"></div>
+
+<script>
+  function titleCase(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+  }
+
+  let urlString = window.location.href;
+  let searchUrl = new URL(urlString);
+  let dest = searchUrl.searchParams.get("destination");
+  document.getElementById("enteredDest").value = titleCase(dest);
+</script>
+
+<script>
+  var map = L.map('map',{
+  center: [49.283401, -123.1168069],
+  zoom: 15
+  });
+
+  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+</script>
+
+
+
+</body>
+
+</html>
