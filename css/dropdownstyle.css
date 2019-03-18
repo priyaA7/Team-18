@@ -13,6 +13,8 @@
   
 .dropdown .dropbtn1, .dropbtn2, .dropbtn3, .dropbtn4 {
     color: white; 
+    width: 200px;
+    height: 80px;
     padding: 25px 40px; 
     cursor: pointer; 
     border:none;

@@ -3,14 +3,9 @@
 <html>
 
 <head>
-<title>Location and Destination Input</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel='stylesheet' type='text/css' href='css/searchstyle.css'>
-
-<!--Map Source-->
-<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
-<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-
+  <title>Location and Destination Input</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel='stylesheet' type='text/css' href='css/searchstyle.css'>
 </head>
 <body id="bodyinfo">
 
@@ -38,17 +33,20 @@
 </script>
 
 <script>
-  var map = L.map('map',{
-  center: [49.283401, -123.1168069],
-  zoom: 15
-  });
-
-  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-  }).addTo(map);
-</script>
-
-
+  // Initialize and add the map
+  function initMap() {
+    // The location of Van
+    var van = {lat: 49.282730, lng: -123.120735};
+    // The map, centered at Vancouver
+    var map = new google.maps.Map(
+        document.getElementById('map'), {zoom: 15, center: van});
+    // The marker, positioned at Vancouver
+    var marker = new google.maps.Marker({position: van, map: map});
+  }
+  </script>
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWkAVDBqCAsTxYkIoZI9FtxMbyo6n9Ezs&callback=initMap">
+  </script>
 
 </body>
 
