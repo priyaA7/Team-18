@@ -8,7 +8,7 @@
     background-color:#ddd;
     overflow: hidden;
     font-family: Arial, Helvetica, sans-serif;
-    bottom: 10px;
+    bottom: 250px;
 }
   
 .dropdown .dropbtn1, .dropbtn2, .dropbtn3, .dropbtn4 {
@@ -32,7 +32,7 @@
 
 .dropdown-content {
     display: none;
-    position: absolute;
+    position: fixed;
     background-color: #f9f9f9;
     min-width: 197px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
