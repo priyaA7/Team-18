@@ -13,7 +13,7 @@
     padding-left: 30px;
     border: solid;
     border-width: 0.1px;
-    border-color: #5F9EA0;
+    border-color: black;
     background-color:#F9FDFE;
 }
 
@@ -34,4 +34,8 @@
     right: 0px;
     width: 80%;
     height: 100%;
+}
+
+textarea:focus, #enteredDest:focus, #searchResult2:focus {
+    outline: none;
 }

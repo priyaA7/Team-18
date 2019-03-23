@@ -5,14 +5,14 @@
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    background-color:#ddd;
+    background-color:white;
     overflow: hidden;
     font-family: Arial, Helvetica, sans-serif;
     bottom: 250px;
 }
   
 .dropdown .dropbtn1, .dropbtn2, .dropbtn3, .dropbtn4 {
-    color: white; 
+    color: rgb(71, 71, 71); 
     width: 200px;
     height: 80px;
     padding: 25px 40px; 
@@ -28,7 +28,7 @@
 .dropbtn2:hover, .dropbtn2:focus,
 .dropbtn3:hover, .dropbtn3:focus,
 .dropbtn4:hover, .dropbtn4:focus {
-    background-color:aqua;
+    background-color: #ddd;
     width: 197px;
 }
 
