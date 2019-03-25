@@ -1,12 +1,11 @@
 #bodyinfo {
   font-family: Arial, Helvetica;
-  background-color: #61D5FE;
+  background-color: rgba(180, 180, 180, 0.295);
 }
-
 
 #enteredDest, #searchResult2 {
     top: 5%;
-    width: 200px;
+    width: 222px;
     height: 30px;
     left: 10px;
     font-size: 20px;
@@ -14,10 +13,10 @@
     border: solid;
     border-width: 0.1px;
     border-color: black;
-    background-color:#F9FDFE;
+    background-color:white;
 }
 
-#searchLogo {
+/* #searchLogo {
     position: absolute;
     top: 1.5%;
     left: 175px;
@@ -26,13 +25,13 @@
     cursor: pointer;
     font-size: 15px;
     padding:4px 7px;
-}
+} */
 
 #map {
     position: absolute;
     top: 0px;
     right: 0px;
-    width: 80%;
+    width: 82.5%;
     height: 100%;
 }
 
