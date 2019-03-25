@@ -3,15 +3,6 @@ button, p, input, img, button {
     position: absolute;
 }
 
-#searchBar {
-    top: 50%;
-    width: 1028px;
-    height: 107px;
-    left: 198px;
-    font-size: 64px;
-    padding-left: 30px;
-}
-
 p { 
     top: 22.5px;
     left: 500px;
@@ -30,11 +21,33 @@ body {
 }
 
 #searchButton {
-    left: 665px;
-    top: 70%;
+    left: 625px;
+    top: 50%;
     border: none;
     color: rgb(114, 114, 114);
     cursor: pointer;
     font-size: 16px;
     padding: 15px 32px;
+}
+
+#navigation {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#nav_select {
+    display: inline;
+}
+
+#nav_select a {
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    padding: 30px 34px;
+}
+
+#nav_select a:hover {
+    color: rgb(187, 187, 187)
 }

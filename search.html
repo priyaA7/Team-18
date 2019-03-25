@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 
 <html>
-
 <head>
-    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
-    <script>
+  <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
+  <script>
     // Initialize Firebase
     var config = {
       apiKey: "AIzaSyBElZSFIpGBAWT-dqWbjrEexWPBIsnMspQ",
@@ -28,10 +27,10 @@
   <div id="logo">
     <a href="search.html"><h1>PEDALS</h1></a>
   </div>
+
   <div id="forminput">
     <form class="searchlocation" action="search.html">
       <input id="searchResult2" type="text" placeholder="ENTER STARTING POSITION" name="search">
-      <!-- <button id="searchLogo"type="search"><i class="fa fa-search"></i></button> -->
     </form> 
     
     <form class="searchdestination">
@@ -42,39 +41,38 @@
   <div id="map"></div>
 
   <div class="navbar">
-      <div class="dropdown">
-        <button class="dropbtn1" onclick="myFunction()"> <i class="fas fa-signal" style="font-size:22px"></i> DIFFICULTY 
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content" id="myDropdown">
-          <a href="#" <i class="fas fa-bicycle" style="font-size:16px;"></i> <font face="verdana" font size="2" color="black"> Beginner </font> </a>
-          
-          <a href="#" <i class="fas fa-bicycle" style="font-size:16px;"></i>
-          <i class='fas fa-bicycle' style='font-size:16px'></i> <font face="verdana" font size="2" color="black"> Advanced  </font> </a>
-    
-          <a href="#" <i class="fas fa-bicycle" style="font-size:16px;"></i>    
-          <i class="fas fa-bicycle" style="font-size:16px;"></i>
-          <i class="fas fa-bicycle" style="font-size:16px;"></i> <font face="verdana" font size="2" color="black"> Intermediate </font> </a>
-        </div>
-    
-        <button class="dropbtn2" onclick="myFunction2()"> <i class="fas fa-cocktail" style="font-size:24px"></i> ATTRACTIONS 
-          <i class="fa fa-caret-down"></i>
-        </button>
-    
-        <div class="dropdown-content" id="myDropdown2">
-          <a href="#">Shops</a>
-          <a href="#">Restaurants</a>
-          <a href="#">Parks</a>
-        </div>
-    
-        <button class="dropbtn3"> <i class="fas fa-parking" style="font-size:27px"></i> PARKING
-          <a href="#"></a>
-        </button>
-    
-        <a href='#'><button class="dropbtn4" > <i class="fas fa-bicycle" style="font-size:24px"></i> RENTALS
-        </button></a>
-    
-      </div> 
+    <div class="dropdown">
+      <button class="dropbtn1" onclick="myFunction()"> <i class="fas fa-signal" style="font-size:22px"></i> DIFFICULTY 
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content" id="myDropdown">
+        <a href="#" <i class="fas fa-bicycle" style="font-size:16px;"></i> <font face="verdana" font size="2" color="black"> Beginner </font> </a>
+        
+        <a href="#" <i class="fas fa-bicycle" style="font-size:16px;"></i>
+        <i class='fas fa-bicycle' style='font-size:16px'></i> <font face="verdana" font size="2" color="black"> Advanced  </font> </a>
+  
+        <a href="#" <i class="fas fa-bicycle" style="font-size:16px;"></i>    
+        <i class="fas fa-bicycle" style="font-size:16px;"></i>
+        <i class="fas fa-bicycle" style="font-size:16px;"></i> <font face="verdana" font size="2" color="black"> Intermediate </font> </a>
+      </div>
+  
+      <button class="dropbtn2" onclick="myFunction2()"> <i class="fas fa-cocktail" style="font-size:24px"></i> ATTRACTIONS 
+        <i class="fa fa-caret-down"></i>
+      </button>
+  
+      <div class="dropdown-content" id="myDropdown2">
+        <a href="#">Shops</a>
+        <a href="#">Restaurants</a>
+        <a href="#">Parks</a>
+      </div>
+  
+      <button class="dropbtn3"> <i class="fas fa-parking" style="font-size:27px"></i> PARKING
+        <a href="#"></a>
+      </button>
+  
+      <a href='#'><button class="dropbtn4" > <i class="fas fa-bicycle" style="font-size:24px"></i> RENTALS
+      </button></a>
+    </div> 
   </div>
     
   <script>
@@ -106,135 +104,123 @@
           }
       }
     }
-    
+ 
   </script>
 
-  <script> 
-    function titleCase(str) {
-      return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-    }
+  <script>
+      function initAutocomplete() {
+          var map = new google.maps.Map(document.getElementById("map"), {
+            center: {lat: 49.282730, lng: -123.120735},
+            zoom: 10,
+            mapTypeId: "roadmap"
+          });
 
-    let urlString = window.location.href;
-    let searchUrl = new URL(urlString);
-    let dest = searchUrl.searchParams.get("destination");
-    document.getElementById("enteredDest").value = titleCase(dest);
+          var Destination = document.getElementById("enteredDest");
+          var searchBox = new google.maps.places.SearchBox(Destination);
+          var location = document.getElementById("searchResult2");
+          var locationBox = new google.maps.places.SearchBox(location);
+
+          // Bias the SearchBox results towards current map's viewport.
+          map.addListener("bounds_changed", function() {
+            searchBox.setBounds(map.getBounds());
+            locationBox.setBounds(map.getBounds());
+          });
+
+          var markers = [];
+          // Listen for the event fired when the user selects a prediction and retrieve
+          // more details for that place.
+          searchBox.addListener('places_changed', function() {
+            let places = searchBox.getPlaces();
+
+            if (places.length == 0) {
+              return;
+            }
+
+            // Clear out the old markers.
+            markers.forEach(function(marker) {
+              marker.setMap(null);
+            });
+            markers = [];
+
+            // For each place, get the icon, name and location.
+            let bounds = new google.maps.LatLngBounds();
+            places.forEach(function(place) {
+              if (!place.geometry) {
+                console.log("Returned place contains no geometry");
+                return;
+              }
+              let icon = {
+                url: place.icon,
+                size: new google.maps.Size(71, 71),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(17, 34),
+                scaledSize: new google.maps.Size(25, 25)
+              };
+
+              // Create a marker for each place.
+              markers.push(new google.maps.Marker({
+                map: map,
+                icon: icon,
+                title: place.name,
+                position: place.geometry.location
+              }));
+
+              if (place.geometry.viewport) {
+                // Only geocodes have viewport.
+                bounds.union(place.geometry.viewport);
+              } else {
+                bounds.extend(place.geometry.location);
+              }
+            });
+            map.fitBounds(bounds);
+          });
+
+          var markers2 = [];
+          locationBox.addListener('places_changed', function() {
+            let places = locationBox.getPlaces();
+
+            if (places.length == 0) {
+              return;
+            }
+
+            markers2.forEach(function(marker) {
+              marker.setMap(null);
+            });
+            markers2 = [];
+
+            let bounds = new google.maps.LatLngBounds();
+            places.forEach(function(place) {
+              if (!place.geometry) {
+                console.log("Returned place contains no geometry");
+                return;
+              }
+              let icon = {
+                url: place.icon,
+                size: new google.maps.Size(71, 71),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(17, 34),
+                scaledSize: new google.maps.Size(25, 25)
+              };
+
+              markers2.push(new google.maps.Marker({
+                map: map,
+                icon: icon,
+                title: place.name,
+                position: place.geometry.location
+              }));
+
+              if (place.geometry.viewport) {
+                bounds.union(place.geometry.viewport);
+              } else {
+                bounds.extend(place.geometry.location);
+              }
+            });
+            map.fitBounds(bounds);
+          });
+        }
   </script>
 
-<script>
-    function initAutocomplete() {
-        var map = new google.maps.Map(document.getElementById("map"), {
-          center: {lat: 49.282730, lng: -123.120735},
-          zoom: 10,
-          mapTypeId: "roadmap"
-        });
-
-        var Destination = document.getElementById("enteredDest");
-        var searchBox = new google.maps.places.SearchBox(Destination);
-        var location = document.getElementById("searchResult2");
-        var locationBox = new google.maps.places.SearchBox(location);
-
-        // Bias the SearchBox results towards current map's viewport.
-        map.addListener("bounds_changed", function() {
-          searchBox.setBounds(map.getBounds());
-          locationBox.setBounds(map.getBounds());
-        });
-
-        var markers = [];
-        // Listen for the event fired when the user selects a prediction and retrieve
-        // more details for that place.
-        searchBox.addListener('places_changed', function() {
-          let places = searchBox.getPlaces();
-
-          if (places.length == 0) {
-            return;
-          }
-
-          // Clear out the old markers.
-          markers.forEach(function(marker) {
-            marker.setMap(null);
-          });
-          markers = [];
-
-          // For each place, get the icon, name and location.
-          let bounds = new google.maps.LatLngBounds();
-          places.forEach(function(place) {
-            if (!place.geometry) {
-              console.log("Returned place contains no geometry");
-              return;
-            }
-            let icon = {
-              url: place.icon,
-              size: new google.maps.Size(71, 71),
-              origin: new google.maps.Point(0, 0),
-              anchor: new google.maps.Point(17, 34),
-              scaledSize: new google.maps.Size(25, 25)
-            };
-
-            // Create a marker for each place.
-            markers.push(new google.maps.Marker({
-              map: map,
-              icon: icon,
-              title: place.name,
-              position: place.geometry.location
-            }));
-
-            if (place.geometry.viewport) {
-              // Only geocodes have viewport.
-              bounds.union(place.geometry.viewport);
-            } else {
-              bounds.extend(place.geometry.location);
-            }
-          });
-          map.fitBounds(bounds);
-        });
-
-        var markers2 = [];
-        locationBox.addListener('places_changed', function() {
-          let places = locationBox.getPlaces();
-
-          if (places.length == 0) {
-            return;
-          }
-
-          markers2.forEach(function(marker) {
-            marker.setMap(null);
-          });
-          markers2 = [];
-
-          let bounds = new google.maps.LatLngBounds();
-          places.forEach(function(place) {
-            if (!place.geometry) {
-              console.log("Returned place contains no geometry");
-              return;
-            }
-            let icon = {
-              url: place.icon,
-              size: new google.maps.Size(71, 71),
-              origin: new google.maps.Point(0, 0),
-              anchor: new google.maps.Point(17, 34),
-              scaledSize: new google.maps.Size(25, 25)
-            };
-
-            markers2.push(new google.maps.Marker({
-              map: map,
-              icon: icon,
-              title: place.name,
-              position: place.geometry.location
-            }));
-
-            if (place.geometry.viewport) {
-              bounds.union(place.geometry.viewport);
-            } else {
-              bounds.extend(place.geometry.location);
-            }
-          });
-          map.fitBounds(bounds);
-        });
-      }
-    </script>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWkAVDBqCAsTxYkIoZI9FtxMbyo6n9Ezs&libraries=places&callback=initAutocomplete"
-async defer></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWkAVDBqCAsTxYkIoZI9FtxMbyo6n9Ezs&libraries=places&callback=initAutocomplete"
+  async defer></script>
 </body>
-
 </html>
