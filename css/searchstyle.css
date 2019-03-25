@@ -1,6 +1,6 @@
-#bodyinfo {
+#bodyinfo, html {
   font-family: Arial, Helvetica;
-  background-color: rgba(180, 180, 180, 0.295);
+  background-color: lightgray;
 }
 
 #enteredDest, #searchResult2 {
@@ -8,12 +8,21 @@
     width: 222px;
     height: 30px;
     left: 10px;
-    font-size: 20px;
+    font-size: 16px;
     padding-left: 10px;
     border: solid;
     border-width: 0.1px;
     border-color: black;
     background-color:white;
+}
+
+#forminput {
+    position: absolute;
+    top: 70px;
+}
+
+#logo {
+    text-align: center;
 }
 
 /* #searchLogo {
@@ -27,12 +36,20 @@
     padding:4px 7px;
 } */
 
+a, a:visited {
+    text-decoration: none;
+    color: black;
+}
+
 #map {
     position: absolute;
-    top: 0px;
+    top: 70px;
     right: 0px;
     width: 82.5%;
-    height: 100%;
+    height: -moz-calc(100vh - 70px);
+    height: -webkit-calc(100vh - 70px);
+    height: -o-calc(100vh - 70px);
+    height: calc(100vh - 70px);
 }
 
 textarea:focus, #enteredDest:focus, #searchResult2:focus {
