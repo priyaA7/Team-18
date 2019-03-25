@@ -3,6 +3,20 @@
 <html>
 
 <head>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyBElZSFIpGBAWT-dqWbjrEexWPBIsnMspQ",
+      authDomain: "comp1930-9cf9c.firebaseapp.com",
+      databaseURL: "https://comp1930-9cf9c.firebaseio.com",
+      projectId: "comp1930-9cf9c",
+      storageBucket: "comp1930-9cf9c.appspot.com",
+      messagingSenderId: "222423854972"
+    };
+    firebase.initializeApp(config);
+  </script>
+
   <title>Location and Destination Input</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="css/searchstyle.css">
@@ -13,7 +27,7 @@
 <body id="bodyinfo" onload="getLocation()">
   <form class="searchlocation" action="search.html">
     <input id="searchResult2" type="text" placeholder="Enter Location" name="search">
-    <button id="searchLogo"type="search"><i class="fa fa-search"></i></button>
+    <!-- <button id="searchLogo"type="search"><i class="fa fa-search"></i></button> -->
   </form> 
 
   <form class="searchdestination">
@@ -135,30 +149,121 @@
     document.getElementById("enteredDest").value = titleCase(dest);
   </script>
 
-  <script>
-    // Initialize and add the map
-    function initMap() {
-      // The location of Van
-      var dest = {lat: 49.282730, lng: -123.120735};
-      // The map, centered at Vancouver
-      var map = new google.maps.Map(
-        document.getElementById("map"), {zoom: 15, center: dest});
-      // The marker, positioned at Vancouver
-      var marker = new google.maps.Marker({position: dest, map: map});
-    };
+<script>
+    function initAutocomplete() {
+        var map = new google.maps.Map(document.getElementById("map"), {
+          center: {lat: 49.282730, lng: -123.120735},
+          zoom: 10,
+          mapTypeId: "roadmap"
+        });
 
-    // Window Pop-Up that requests for to obtain users-location
-    // function getLocation() {
-    //   if (navigator.geolocation) {
-    //     navigator.geolocation.getCurrentPosition(showPosition);
-    //   } 
-    // }
+        var Destination = document.getElementById("enteredDest");
+        var searchBox = new google.maps.places.SearchBox(Destination);
+        var location = document.getElementById("searchResult2");
+        var locationBox = new google.maps.places.SearchBox(location);
 
-  </script>
-  <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWkAVDBqCAsTxYkIoZI9FtxMbyo6n9Ezs&callback=initMap">
-  </script>
+        // Bias the SearchBox results towards current map's viewport.
+        map.addListener("bounds_changed", function() {
+          searchBox.setBounds(map.getBounds());
+          locationBox.setBounds(map.getBounds());
+        });
 
+        var markers = [];
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener('places_changed', function() {
+          let places = searchBox.getPlaces();
+
+          if (places.length == 0) {
+            return;
+          }
+
+          // Clear out the old markers.
+          markers.forEach(function(marker) {
+            marker.setMap(null);
+          });
+          markers = [];
+
+          // For each place, get the icon, name and location.
+          let bounds = new google.maps.LatLngBounds();
+          places.forEach(function(place) {
+            if (!place.geometry) {
+              console.log("Returned place contains no geometry");
+              return;
+            }
+            let icon = {
+              url: place.icon,
+              size: new google.maps.Size(71, 71),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(17, 34),
+              scaledSize: new google.maps.Size(25, 25)
+            };
+
+            // Create a marker for each place.
+            markers.push(new google.maps.Marker({
+              map: map,
+              icon: icon,
+              title: place.name,
+              position: place.geometry.location
+            }));
+
+            if (place.geometry.viewport) {
+              // Only geocodes have viewport.
+              bounds.union(place.geometry.viewport);
+            } else {
+              bounds.extend(place.geometry.location);
+            }
+          });
+          map.fitBounds(bounds);
+        });
+
+        var markers2 = [];
+        locationBox.addListener('places_changed', function() {
+          let places = locationBox.getPlaces();
+
+          if (places.length == 0) {
+            return;
+          }
+
+          markers2.forEach(function(marker) {
+            marker.setMap(null);
+          });
+          markers2 = [];
+
+          let bounds = new google.maps.LatLngBounds();
+          places.forEach(function(place) {
+            if (!place.geometry) {
+              console.log("Returned place contains no geometry");
+              return;
+            }
+            let icon = {
+              url: place.icon,
+              size: new google.maps.Size(71, 71),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(17, 34),
+              scaledSize: new google.maps.Size(25, 25)
+            };
+
+            markers2.push(new google.maps.Marker({
+              map: map,
+              icon: icon,
+              title: place.name,
+              position: place.geometry.location
+            }));
+
+            if (place.geometry.viewport) {
+              bounds.union(place.geometry.viewport);
+            } else {
+              bounds.extend(place.geometry.location);
+            }
+          });
+          map.fitBounds(bounds);
+        });
+      }
+    </script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWkAVDBqCAsTxYkIoZI9FtxMbyo6n9Ezs&libraries=places&callback=initAutocomplete"
+async defer></script>
 </body>
 
 </html>
