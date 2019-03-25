@@ -62,25 +62,14 @@
           <a href="#">Parks</a>
         </div>
     
-        <button class="dropbtn3" onclick="myFunction3()"> <i class="fas fa-parking" style="font-size:27px"></i> PARKING
-          <i class="fa fa-caret-down"></i>
+        <button class="dropbtn3"> <i class="fas fa-parking" style="font-size:27px"></i> PARKING
+          <a href="#"></a>
         </button>
     
-        <div class="dropdown-content" id="myDropdown3">
-          <a href="#">Option one</a>
-          <a href="#">Option two</a>
-          <a href="#">Option three</a>
-        </div>
-    
-        <button class="dropbtn4" onclick="myFunction4()"> <i class="fas fa-bicycle" style="font-size:24px"></i> RENTALS
-          <i class="fa fa-caret-down"></i>
+        <button class="dropbtn4" > <i class="fas fa-bicycle" style="font-size:24px"></i> RENTALS
+          <a href='#'></a>
         </button>
     
-        <div class="dropdown-content" id="myDropdown4">
-          <a href="#">Option one</a>
-          <a href="#">Option two</a>
-          <a href="#">Option three</a>
-        </div>
       </div> 
   </div>
     
@@ -97,34 +86,12 @@
       document.getElementById("myDropdown2").classList.toggle("show");
     }
     
-    function myFunction3() {
-      document.getElementById("myDropdown3").classList.toggle("show");
-    }
-    
-    function myFunction4() {
-      document.getElementById("myDropdown4").classList.toggle("show");
-    }
-    
     // Close the dropdown if the user clicks outside of it
     window.onclick = function(e) {
       if (!e.target.matches(".dropbtn1")) {
         let myDropdown = document.getElementById("myDropdown");
           if (myDropdown.classList.contains("show")) {
             myDropdown.classList.remove("show");
-          }
-      }
-    
-      if (!e.target.matches(".dropbtn4")) {
-        let myDropdown2 = document.getElementById("myDropdown4");
-          if (myDropdown2.classList.contains("show")) {
-            myDropdown2.classList.remove("show");
-          }
-      }
-    
-      if (!e.target.matches(".dropbtn3")) {
-        let myDropdown2 = document.getElementById("myDropdown3");
-          if (myDropdown2.classList.contains("show")) {
-            myDropdown2.classList.remove("show");
           }
       }
     
