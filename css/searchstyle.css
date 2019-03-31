@@ -4,6 +4,7 @@
 }
 
 #enteredDest, #searchResult2 {
+    display: block;
     top: 5%;
     width: 222px;
     height: 30px;
@@ -24,17 +25,6 @@
 #logo {
     text-align: center;
 }
-
-/* #searchLogo {
-    position: absolute;
-    top: 1.5%;
-    left: 175px;
-    background-color: #F9FDFE;
-    border: none;
-    cursor: pointer;
-    font-size: 15px;
-    padding:4px 7px;
-} */
 
 a, a:visited {
     text-decoration: none;

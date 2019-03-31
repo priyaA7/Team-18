@@ -1,11 +1,9 @@
-button, p, input, img, button {
+body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    position: absolute;
 }
 
 p { 
     top: 22.5px;
-    left: 500px;
     width: 466px;
     height: 87px;
     font-size: 144px;
@@ -14,7 +12,7 @@ p {
 }
 
 body {
-    background-image: url("../background.jpg");
+    background-image: url("../images/background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-size:100% 100vh;
@@ -31,7 +29,6 @@ body {
 }
 
 #navigation {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -39,6 +36,7 @@ body {
 
 #nav_select {
     display: inline;
+    font-size: 15px;
 }
 
 #nav_select a {
