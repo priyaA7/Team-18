@@ -127,6 +127,17 @@
             position: place.geometry.location
           }));
 
+          let lat = place.geometry.location.lat();
+          let lng = place.geometry.location.lng();
+
+          firebase.database().ref("Destination/").set({
+            latitude: lat,
+            longitude: lng
+          });
+          
+          console.log("Longitude: ", lng);
+          console.log("Latitude: ", lat);
+
           if (place.geometry.viewport) {
             // Only geocodes have viewport.
             bounds.union(place.geometry.viewport);
@@ -136,13 +147,6 @@
           });
           map.fitBounds(bounds);
         });
-        
-
-
-
-
-
-
 
 
         var markers2 = [];
@@ -169,6 +173,14 @@
               title: place.name,
               position: place.geometry.location
             }));
+
+            let lat = place.geometry.location.lat();
+            let lng = place.geometry.location.lng();
+
+            firebase.database().ref("Starting/").set({
+              latitude: lat,
+              longitude: lng
+            });
 
             if (place.geometry.viewport) {
               bounds.union(place.geometry.viewport);
