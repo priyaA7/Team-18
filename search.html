@@ -16,7 +16,7 @@
     firebase.initializeApp(config);
   </script>
 
-  <title>Location and Destination Input</title>
+  <title>PEDALS</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="css/searchstyle.css">
   <link rel="stylesheet" type="text/css" href="css/dropdownstyle.css">
@@ -58,140 +58,9 @@
     </div> 
   </div>
     
-  <script>
-    /* When the user clicks on the button, 
-    toggle between hiding and showing the dropdown content */
-    function myFunction() {
-      document.getElementById("myDropdown").classList.toggle("show");
-    }
-    
-    /* Close the dropdown if the user clicks outside of it */
-    window.onclick = function(e) {
-      if (!e.target.matches(".dropbtn1")) {
-        let myDropdown = document.getElementById("myDropdown");
-        if (myDropdown.classList.contains("show")) {
-          myDropdown.classList.remove("show");
-        }
-      }
-    }
-  </script>
+  <script type='text/javascript' src='assets/dropdown.js'></script>
 
-  <script>
-    function initAutocomplete() {
-      var map = new google.maps.Map(document.getElementById("map"), {
-        center: {lat: 49.282730, lng: -123.120735},
-        zoom: 10,
-        mapTypeId: "roadmap"
-      });
-
-      var Destination = document.getElementById("enteredDest");
-      var searchBox = new google.maps.places.SearchBox(Destination);
-      
-      var location = document.getElementById("searchResult2");
-      var locationBox = new google.maps.places.SearchBox(location);
-
-      // Bias the SearchBox results towards current map's viewport.
-      map.addListener("bounds_changed", function() {
-        searchBox.setBounds(map.getBounds());
-        locationBox.setBounds(map.getBounds());
-      });
-      
-      var markers = [];
-      // Listen for the event fired when the user selects a prediction and retrieve
-      // more details for that place.
-      searchBox.addListener('places_changed', function() {
-        let places = searchBox.getPlaces();
-
-        if (places.length == 0) {
-          return;
-        }
-        
-        // Clear out the old markers.
-        markers.forEach(function(marker) {
-          marker.setMap(null);
-        });
-        markers = [];
-
-        // For each place, get the icon, name and location.
-        let bounds = new google.maps.LatLngBounds();
-        places.forEach(function(place) {
-          if (!place.geometry) {
-            console.log("Returned place contains no geometry");
-            return;
-          }
-
-          // Create a marker for each place.
-          markers.push(new google.maps.Marker({
-            map: map,
-            title: place.name,
-            position: place.geometry.location
-          }));
-
-          let lat = place.geometry.location.lat();
-          let lng = place.geometry.location.lng();
-
-          firebase.database().ref("Destination/").set({
-            latitude: lat,
-            longitude: lng
-          });
-          
-          console.log("Longitude: ", lng);
-          console.log("Latitude: ", lat);
-
-          if (place.geometry.viewport) {
-            // Only geocodes have viewport.
-            bounds.union(place.geometry.viewport);
-          } else {
-            bounds.extend(place.geometry.location);
-            }
-          });
-          map.fitBounds(bounds);
-        });
-
-
-        var markers2 = [];
-        locationBox.addListener('places_changed', function() {
-          let places = locationBox.getPlaces();
-          if (places.length == 0) {
-            return;
-          }
-
-          markers2.forEach(function(marker) {
-            marker.setMap(null);
-          });
-          markers2 = [];
-
-          let bounds = new google.maps.LatLngBounds();
-          places.forEach(function(place) {
-            if (!place.geometry) {
-              console.log("Returned place contains no geometry");
-              return;
-            }
-
-            markers2.push(new google.maps.Marker({
-              map: map,
-              title: place.name,
-              position: place.geometry.location
-            }));
-
-            let lat = place.geometry.location.lat();
-            let lng = place.geometry.location.lng();
-
-            firebase.database().ref("Starting/").set({
-              latitude: lat,
-              longitude: lng
-            });
-
-            if (place.geometry.viewport) {
-              bounds.union(place.geometry.viewport);
-            } else {
-              bounds.extend(place.geometry.location);
-            }
-        });
-        map.fitBounds(bounds);
-      });
-    }
-  </script>
+  <script type='text/javascript' src='assets/map.js'></script>
 
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWkAVDBqCAsTxYkIoZI9FtxMbyo6n9Ezs&libraries=places&callback=initAutocomplete"
   async defer></script>
