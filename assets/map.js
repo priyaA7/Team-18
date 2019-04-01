@@ -112,4 +112,39 @@ function initAutocomplete() {
       });
       map.fitBounds(bounds);
     });
+
+    let dlat = firebase.database().ref("Destination/latitude");
+    let dlng = firebase.database().ref("Destination/longitude");
+    let slat = firebase.database().ref("Starting/latitude");
+    let slng = firebase.database().ref("Starting/longitude");
+
+    latval = dlat.on("value", function(snap) {
+        snap.val();
+    });
+    // lngval = dlng.on("value", function(snap){return snap.val();});
+    // slatval = slat.on("value", function(snap){return snap.val();});
+    // slngval = slng.on("value", function(snap){return snap.val();})
+
+
+    let line = [
+        {lat: latval, 
+        lng: lngval},
+        {lat: slatval, 
+        lng: slngval}
+    ];
+
+    // let line = [
+    //     {lat: 49.2365522, lng: -123.09043600000001},
+    //     {lat: 49.288199, lng: -123.11667899999998}
+    // ];
+
+    let path = new google.maps.Polyline({
+        path: line,
+        // geodesic: true,
+        strokeColor: '#FF0000',
+        strokeOpacity: 1.0,
+        strokeWeight: 2
+    });
+
+    path.setMap(map);
 }
