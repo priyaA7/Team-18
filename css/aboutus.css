@@ -1,0 +1,154 @@
+﻿<style>
+* {
+  box-sizing: border-box;
+}
+
+</style>
+
+body {
+  font-family: Arial;
+  padding: 10px;
+  background: #F8F8F8;
+}
+
+/* Header/Blog Title */
+.header {
+  background-image: url("../images/bike1.jpg");
+  width: 1502px;
+  length: 100px;
+  padding: 30px;
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 70px;
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.header h2 {
+  font-size: 40px;
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+}
+
+
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #ff8244;
+}
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: #c4c1bc;
+  color: black;
+}
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {   
+  float: left;
+  width: 70%;
+  padding-top: 0px;
+  padding-left: 5px;
+  padding-bottom: 3px;
+  background-color: #F8F8F8;
+}
+
+.rightcolumn {   
+  float: left;
+  width: 30%;
+  background-color: #F8F8F8;
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
+
+.img {
+  background-image: url("bikelane.jpg");
+  width: 100%;
+  padding: 20px;
+}
+
+/* Add a card effect for articles */
+.card {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+  float: left;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: right;
+  font-size: 10px;
+  color: white;
+  background: #ffc299;
+  margin-top: 20px;
+}
+
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.card1 {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container1 {
+ width: fixed;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .leftcolumn{   
+    width: 100%;
+    padding: 0;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .topnav a {
+    float: none;
+    width: 100%;
+  }
+}
