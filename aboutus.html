@@ -2,154 +2,13 @@
 <html>
 <div class="container1">
 <head>
+<link rel='stylesheet' type='text/css' href='css/aboutus.css'>
 <style>
 * {
-  box-sizing: border-box;
-}
-
-body {
   font-family: Arial;
-  padding: 10px;
-  background: #f1f1f1;
-}
-
-/* Header/Blog Title */
-.header {
-  background-image: url("bike1.jpg");
-  width: 1483px;
-  length: 100px;
-  padding: 30px;
-  text-align: center;
-}
-
-.header h1 {
-  font-size: 70px;
-  color: white;
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-}
-
-.header h2 {
-  font-size: 40px;
-  color: white;
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-
-}
-
-
-/* Style the top navigation bar */
-.topnav {
-  overflow: hidden;
-  background-color: #ff8244;
-}
-
-/* Style the topnav links */
-.topnav a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-/* Change color on hover */
-.topnav a:hover {
-  background-color: #c4c1bc;
-  color: black;
-}
-
-/* Create two unequal columns that floats next to each other */
-/* Left column */
-.leftcolumn {   
-  float: left;
-  width: 70%;
-}
-
-.rightcolumn {   
-  float: left;
-  width: 30%;
-  background-color: #f1f1f1;
-  padding-left: 20px;
-  padding-top: 20px;
-}
-
-
-.img {
-  background-image: url("bikelane.jpg");
-  width: 100%;
-  padding: 20px;
-}
-
-/* Add a card effect for articles */
-.card {
-  background-color: white;
-  padding: 20px;
-  margin-top: 20px;
-  float: left;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Footer */
-.footer {
-  padding: 20px;
-  text-align: right;
-  font-size: 10px;
-  color: white;
-  background: #ffc299;
-  margin-top: 20px;
-}
-
   box-sizing: border-box;
 }
 
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-
-.card1 {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-}
-
-.container {
-  padding: 0 16px;
-}
-
-.container1 {
- width: fixed;
-}
-
-.container::after, .row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-.title {
-  color: grey;
-}
-
-
-/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 800px) {
-  .leftcolumn{   
-    width: 100%;
-    padding: 0;
-  }
-}
-
-/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
-@media screen and (max-width: 400px) {
-  .topnav a {
-    float: none;
-    width: 100%;
-  }
-}
 </style>
 </head>
 <div class="container1">
@@ -161,7 +20,7 @@ body {
 </div>
 
 <div class="topnav">
-  <a href="#">Home</a>
+  <a href="projectindex.html">Home</a>
 </div>
 
 <div class="row">
@@ -170,9 +29,16 @@ body {
 	<h1>OUR MISSION</h1>
 	<img src="bikelane.png"  style="width:50%">
       <div class="container">
-        <p>Hi there! We are three girls located in Vancouver. We love our city, and are excited to contribute to its eco-goals, with our app 'PEDALS'. We hope you enjoy this service and find it
-		helpful in your day to day life!</p>
-    </div>
+        <p> Hey! First of all, thank you so much for visiting our page! We hope our service is helpful, and aids you in your daily life! </p>
+		<p> We decided to develop 'PEDALS' as we saw how much biking is involved in Vancouver's culture. Especially in the last few years, we have seen an
+			influx of bikers, along with the greater development of bike lanes and services. We wanted to make something that can not only be helpful to 
+			the bikers in Vancouver, but extend to other cities as well. 
+		<p> 'PEDALS' allows users to find routes from an inputted location to an inputted destination.
+			They are able to sort these routes by difficulty level, as best suited to their needs. Additionally, users can also find nearby rental services, parking
+			and attractions. </p> 
+		<p> We also hope this app encourages people to bike more often rather than using other forms of transportation, that can be harmful to the environment. Our goal is for 
+		'PEDALS' to not only fit our users goals, but also fit Vancouver's eco-goals!</p>
+		</div>
    </div>
 </div>
 
@@ -189,7 +55,7 @@ body {
    </div>
 </div>
 </div>
-
+</div>
 
 
 <div class="footer">
