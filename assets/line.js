@@ -7,9 +7,101 @@ function initMap() {
   });
   // Function to display line between two points
   displayLine(map);
+  setDestMarkers(map); 
+  setStartMarkers(map);
+
+  let destination = document.getElementById("enteredDest");
+  let searchBox = new google.maps.places.SearchBox(destination);
+    
+  let location = document.getElementById("searchResult2");
+  let locationBox = new google.maps.places.SearchBox(location);
+
+  map.addListener("bounds_changed", function() {
+    searchBox.setBounds(map.getBounds());
+    locationBox.setBounds(map.getBounds());
+  });
+
+  // Initialize the following for Destination search box
+  let markers = [];
+  searchBox.addListener('places_changed', function() {
+    let places = searchBox.getPlaces();
+
+    if (places.length == 0) {
+      return;
+    }
+
+    // Clear out the old markers.
+    markers.forEach(function(marker) {
+      marker.setMap(null);
+    });
+    markers = [];
+
+    // For each place, get the icon, name and location.
+    let bounds = new google.maps.LatLngBounds();
+    places.forEach(function(place) {
+      if (!place.geometry) {
+        console.log("Returned place contains no geometry");
+        return;
+      }
+
+      // Create a marker for each place.
+      markers.push(new google.maps.Marker({
+        map: map,
+        title: place.name,
+        position: place.geometry.location
+      }));
+
+      if (place.geometry.viewport) {
+        // Only geocodes have viewport.
+          bounds.union(place.geometry.viewport);
+        } else {
+          bounds.extend(place.geometry.location);
+        }
+      });
+      map.fitBounds(bounds);
+  });
+
+
+  let markers2 = [];
+  // Initialize the following for Starting position search box
+  locationBox.addListener('places_changed', function() {
+    let places = locationBox.getPlaces();
+    if (places.length == 0) {
+      return;
+    }
+    
+    // Clear any existing markers
+    markers2.forEach(function(marker) {
+      marker.setMap(null);
+    });
+    markers2 = [];
+
+    let bounds = new google.maps.LatLngBounds();
+    places.forEach(function(place) {
+      if (!place.geometry) {
+        console.log("Returned place contains no geometry");
+        return;
+      }
+
+      // Push a marker to markers2, to display on map
+      markers2.push(new google.maps.Marker({
+        map: map,
+        title: place.name,
+        position: place.geometry.location
+      }));
+
+      if (place.geometry.viewport) {
+        bounds.union(place.geometry.viewport);
+      } 
+      else {
+        bounds.extend(place.geometry.location);
+      }
+    });
+    map.fitBounds(bounds);
+  });
 };
 
-let line = [{lat: 49.270937, lng: -123.16214200000002}, {lat: 49.281954, lng: -123.11707439999998}]
+let line = [{lat: 49.2827291, lng: -123.12073750000002}, {lat: 49.31998160000001, lng: -123.07241390000002}]
 function displayLine(map) {
   // Polyline - Google Map built in to produce line
   let bikePath = new google.maps.Polyline({
@@ -21,3 +113,24 @@ function displayLine(map) {
   bikePath.setMap(map);
 };
     
+function setDestMarkers(map) {
+  let destRef = firebase.database().ref('Destination/');
+  destRef.on('value', function(snapshot) {
+    let snap = snapshot.val();    
+    new google.maps.Marker({
+      position: {lat: parseFloat(snap.lat), lng: parseFloat(snap.lng)},
+      map: map
+    });
+  });
+}
+
+function setStartMarkers(map) {
+  let startRef = firebase.database().ref('Starting/');
+  startRef.on('value', function(snapshot) {
+    let snap = snapshot.val();    
+    new google.maps.Marker({
+      position: {lat: parseFloat(snap.lat), lng: parseFloat(snap.lng)},
+      map: map
+    });
+  });
+}
