@@ -1,10 +1,12 @@
-﻿<style>
+﻿/*Style type for elements on page*/
+<style>
 * {
   box-sizing: border-box;
 }
 
 </style>
 
+/*Design specifications used on contents*/
 body {
   font-family: Arial;
   padding: 10px;
@@ -13,19 +15,21 @@ body {
 
 /* Header/Blog Title */
 .header {
-  background-image: url("../images/bike1.jpg");
+  background-image: url("../images/bike1.jpg");   /*Image used in header*/
   width: 100%;
   length: 100px;
   padding: 30px;
   text-align: center;
 }
 
+/*Formatting of first header text in header (larger text, about us)*/
 .header h1 {
   font-size: 70px;
   color: white;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
+/*Formatting of second header text in header (smaller text, pedals)*/
 .header h2 {
   font-size: 40px;
   color: white;
@@ -66,7 +70,7 @@ body {
   padding-bottom: 3px;
   background-color: #F8F8F8;
 }
-
+/*Right column*/
 .rightcolumn {   
   float: left;
   width: 30%;
@@ -75,7 +79,7 @@ body {
   padding-top: 20px;
 }
 
-
+/*Image details for image in left column*/
 .img {
   background-image: url("bikelane.jpg");
   width: 100%;
@@ -107,31 +111,37 @@ body {
   margin-top: 20px;
 }
 
-  box-sizing: border-box;
+ box-sizing: border-box;{
 }
 
+/*Before and after of sizing*/
 *, *:before, *:after {
   box-sizing: inherit;
 }
 
+/*Specifications of card formatting used in columns*/
 .card1 {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
+/*Specifications for container used in left column*/
 .container {
   padding: 0 16px;
 }
 
+/*Specifications for container used on whole body, keeps formatting intact when resizing*/
 .container1 {
  width: fixed;
 }
 
+/*The container specifications before and after*/
 .container::after, .row::after {
   content: "";
   clear: both;
   display: table;
 }
 
+/*Color of title*/
 .title {
   color: grey;
 }
