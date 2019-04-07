@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!-- Search page -->
+<html>
+<head>
+<!-- Link to firebase  -->
+  <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyBElZSFIpGBAWT-dqWbjrEexWPBIsnMspQ",
+      authDomain: "comp1930-9cf9c.firebaseapp.com",
+      databaseURL: "https://comp1930-9cf9c.firebaseio.com",
+      projectId: "comp1930-9cf9c",
+      storageBucket: "comp1930-9cf9c.appspot.com",
+      messagingSenderId: "222423854972"
+    };
+    firebase.initializeApp(config);
+  </script>
+
+  <!-- Links to stylesheets needed for search.html  -->
+  <title>PEDALS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/searchstyle.css">
+  <link rel="stylesheet" type="text/css" href="css/dropdownstyle.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+</head>
+
+<body id="bodyinfo">
+  <div id="logo">
+    <a href="search.html"><h1>PEDALS</h1></a> <!-- Title linking to search page -->
+  </div>
+
+  <!-- Input for starting position and destination -->
+  <div id="forminput">
+    <input id="searchResult2" type="text" placeholder="ENTER STARTING POSITION" name="search">  <!-- Enter starting point-->
+    <input id="enteredDest" type="text" placeholder="DESTINATION" name="search"> <!-- Enter destination -->
+  </div> 
+
+  <!-- Map displaying Vancouver BC -->
+  <div id="map"></div>
+
+  <!-- Dropdown menu featuring various options  -->
+  <div class="navbar">
+    <div class="dropdown" onclick="myFunction()">
+	<!-- Dropdown for attractions  -->
+      <button class="dropbtn1"> <i class="fas fa-cocktail" style="font-size: 20px"> </i> ATTRACTIONS <!-- Specifications for format -->
+        <i class="fa fa-caret-down"></i>
+      </button>
+	  <!-- Contents of 'Attractions' dropdown -->
+      <div class="dropdown-content" id="myDropdown">
+        <a href="#" <font face="verdana" font size="2" color="black"> Shops </font> </a>  <!-- Shops option  -->
+        <a href="restaurants.html" <font face="verdana" font size="2" color="black"> Restaurants </font> </a> <!-- Restaurants option --> 
+        <a href="#" <font face="verdana" font size="2" color="black"> Parks </font> </a> <!-- Parks option -->
+      </div>
+  
+	  <!-- Routes button in dropdown  -->
+      <a href="route.html"> <button class="dropbtn2" onclick="myFunction2()"><i class="fas fa-road" style="font-size:24px"> </i> ROUTES 
+      </button></a>
+      <!-- Parking button in dropdown  -->
+      <a href="parking.html"> <button class="dropbtn3"> <i class="fas fa-parking" style="font-size:27px"></i> PARKING
+      </button> </a>
+      
+	  <!-- Rentals button in dropdown -->
+      <a href="rental.html"><button class="dropbtn4" > <i class="fas fa-bicycle" style="font-size:24px"></i> RENTALS
+      </button></a>
+  
+    </div> 
+  </div>
+    
+  <!-- link to javascript sheets for map element -->
+  <script type='text/javascript' src='assets/dropdown.js'></script>
+
+  <script type='text/javascript' src='assets/map5.js'></script>
+  <!-- Link to API -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWkAVDBqCAsTxYkIoZI9FtxMbyo6n9Ezs&libraries=places&callback=initMap"
+  async defer></script>
+<!-- Closing body and html  -->
+</body>
+</html>
