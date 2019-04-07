@@ -1,60 +1,75 @@
+/* Stylesheet for dropdown menu */
+
+/* Navbar of dropdown specifications*/
 .navbar {
     position: absolute;
-    float: left;
+    float: left;   /*Nvabar/dropdown is positioned to the left*/
     font-size: 16px;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
     background-color:white;
+	/*Any overflow of navbar will be hidden */
     overflow: hidden;
+	/* Fonts used*/
     font-family: Arial, Helvetica, sans-serif;
     top: 250px;
 }
-  
+  /* Specifications for each aspect/button of the dropdown */
 .dropdown .dropbtn1, .dropbtn2, .dropbtn3, .dropbtn4 {
     color: rgb(71, 71, 71); 
+	/*Sizing options */
     width: 200px;
     height: 80px;
     padding: 25px 40px; 
+	/*Specifies what cursor (pointer) is used when pointing over an element */
     cursor: pointer; 
     border:none;
     outline:none;
     display: block; 
+	/* Inheriting color/font from parent element (nav)*/
     background-color: inherit;
     font-family: inherit;
 }
 
-.dropbtn1:hover, .dropbtn1:focus,
+/* Adding details to be able to hover over a dropdown option and focus on a specific option */
+.dropbtn1:hover, .dropbtn1:focus,  /* Being able to not only click on these options, but hover and focus on them individually */
 .dropbtn2:hover, .dropbtn2:focus,
 .dropbtn3:hover, .dropbtn3:focus,
 .dropbtn4:hover, .dropbtn4:focus {
     background-color: #ddd;
     width: 200px;
 }
-
+/* Content of dropdown option (sub options of option selected */
 .dropdown-content {
+    /* Hiding an element */
     display: none;
+	/*Positioned according to body or nearby positioned ancestor */
     position: absolute;
     background-color: #f9f9f9;
     min-width: 200px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	/* Specifies stack order (this would be first) */
     z-index: 1;
 }
-
+/* More specifications with dropdown (padding, alignment) */
 .dropdown-content a {
     float: none;
     color: black;
     padding: 12px 16px;
+	/*No ddecorations added to text, just plain text*/
     text-decoration: none;
     display: block;
     text-align: left;
 
 }
 
+/* Hover settings for dropdown (b-color)*/
 .dropdown-content a:hover {
     background-color: #ddd;
 }
 
+/*Format of diplaying */
 .show {
     display: block;
 }
