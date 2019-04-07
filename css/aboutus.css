@@ -14,7 +14,7 @@ body {
 /* Header/Blog Title */
 .header {
   background-image: url("../images/bike1.jpg");
-  width: 1502px;
+  width: 100%;
   length: 100px;
   padding: 30px;
   text-align: center;
