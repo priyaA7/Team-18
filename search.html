@@ -2,7 +2,6 @@
 <!-- Search page -->
 <html>
 <head>
-<!-- Link to firebase  -->
   <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
   <script>
     // Initialize Firebase
@@ -42,38 +41,38 @@
   <!-- Dropdown menu featuring various options  -->
   <div class="navbar">
     <div class="dropdown" onclick="myFunction()">
-	<!-- Dropdown for attractions  -->
+	    <!-- Dropdown for attractions  -->
       <button class="dropbtn1"> <i class="fas fa-cocktail" style="font-size: 20px"> </i> ATTRACTIONS <!-- Specifications for format -->
         <i class="fa fa-caret-down"></i>
       </button>
-	  <!-- Contents of 'Attractions' dropdown -->
+
+	    <!-- Contents of 'Attractions' dropdown -->
       <div class="dropdown-content" id="myDropdown">
-        <a href="#" <font face="verdana" font size="2" color="black"> Shops </font> </a>  <!-- Shops option  -->
-        <a href="#" <font face="verdana" font size="2" color="black"> Restaurants </font> </a> <!-- Restaurants option --> 
+        <a href="shops.html" <font face="verdana" font size="2" color="black"> Shops </font> </a>  <!-- Shops option  -->
+        <a href="restaurants.html" <font face="verdana" font size="2" color="black"> Restaurants </font> </a> <!-- Restaurants option --> 
         <a href="#" <font face="verdana" font size="2" color="black"> Parks </font> </a> <!-- Parks option -->
       </div>
+    </div> 
   
 	  <!-- Routes button in dropdown  -->
-      <a href="route.html"> <button class="dropbtn2" onclick="myFunction2()"><i class="fas fa-road" style="font-size:24px"> </i> ROUTES 
-      </button></a>
-      <!-- Parking button in dropdown  -->
-      <a href="parking.html"> <button class="dropbtn3"> <i class="fas fa-parking" style="font-size:27px"></i> PARKING
-      </button> </a>
+    <a href="route.html"> <button class="dropbtn2" onclick="myFunction2()"><i class="fas fa-road" style="font-size:24px"> </i> ROUTES 
+    </button></a>
+    <!-- Parking button in dropdown  -->
+    <a href="parking.html"> <button class="dropbtn3"> <i class="fas fa-parking" style="font-size:27px"></i> PARKING
+    </button> </a>
       
 	  <!-- Rentals button in dropdown -->
-      <a href="rental.html"><button class="dropbtn4" > <i class="fas fa-bicycle" style="font-size:24px"></i> RENTALS
-      </button></a>
-  
-    </div> 
+    <a href="rental.html"><button class="dropbtn4" > <i class="fas fa-bicycle" style="font-size:24px"></i> RENTALS
+    </button></a>
   </div>
     
   <!-- link to javascript sheets for map element -->
   <script type='text/javascript' src='assets/dropdown.js'></script>
-
   <script type='text/javascript' src='assets/map.js'></script>
-  <!-- Link to API -->
+
+  <!-- Link to Google Maps API -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWkAVDBqCAsTxYkIoZI9FtxMbyo6n9Ezs&libraries=places&callback=initAutocomplete"
   async defer></script>
-<!-- Closing body and html  -->
+
 </body>
 </html>

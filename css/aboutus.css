@@ -1,13 +1,5 @@
 ﻿/*Stylesheet for about us page*/
 
-/*Style type for elements on page*/
-<style>
-* {
-  box-sizing: border-box;
-}
-
-</style>
-
 /*Design specifications used on contents*/
 body {
   font-family: Arial;
@@ -19,7 +11,6 @@ body {
 .header {
   background-image: url("../images/bike1.jpg");   /*Image used in header*/
   width: 100%;
-  length: 100px;
   padding: 30px;
   text-align: center;
 }
@@ -38,7 +29,6 @@ body {
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 
 }
-
 
 /* Style the top navigation bar */
 .topnav {
@@ -113,9 +103,6 @@ body {
   margin-top: 20px;
 }
 
- box-sizing: border-box;{
-}
-
 /*Before and after of sizing*/
 *, *:before, *:after {
   box-sizing: inherit;
@@ -129,11 +116,6 @@ body {
 /*Specifications for container used in left column*/
 .container {
   padding: 0 16px;
-}
-
-/*Specifications for container used on whole body, keeps formatting intact when resizing*/
-.container1 {
- width: fixed;
 }
 
 /*The container specifications before and after*/

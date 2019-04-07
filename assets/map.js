@@ -1,23 +1,24 @@
 function initAutocomplete() {
-  let line = [];
-  var map = new google.maps.Map(document.getElementById("map"), {
+  let map = new google.maps.Map(document.getElementById("map"), {
     center: {lat: 49.282730, lng: -123.120735},
     zoom: 10,
     mapTypeId: "roadmap"
   });
 
-  var Destination = document.getElementById("enteredDest");
-  var searchBox = new google.maps.places.SearchBox(Destination);
+  let Destination = document.getElementById("enteredDest");
+  let searchBox = new google.maps.places.SearchBox(Destination);
     
-  var location = document.getElementById("searchResult2");
-  var locationBox = new google.maps.places.SearchBox(location);
+  let location = document.getElementById("searchResult2");
+  let locationBox = new google.maps.places.SearchBox(location);
 
+  // Set bounds of map for both inputs
   map.addListener("bounds_changed", function() {
     searchBox.setBounds(map.getBounds());
     locationBox.setBounds(map.getBounds());
   });
     
-  var markers = [];
+  // Initialize the following for Destination search box
+  let markers = [];
   searchBox.addListener('places_changed', function() {
     let places = searchBox.getPlaces();
 
@@ -45,13 +46,15 @@ function initAutocomplete() {
         title: place.name,
         position: place.geometry.location
       }));
-            
+      
+      // Obtain latitude and longitude from Destination search
       let latitude = place.geometry.location.lat();
       let longitude = place.geometry.location.lng();
 
+      // Write current Destination latitude and longitude to database
       firebase.database().ref("Destination/").set({
-          lat: latitude,
-          lng: longitude
+        lat: latitude,
+        lng: longitude
       });
         
       if (place.geometry.viewport) {
@@ -65,55 +68,51 @@ function initAutocomplete() {
   });
     
     
-  var markers2 = [];
+  let markers2 = [];
+  // Initialize the following for Starting position search box
   locationBox.addListener('places_changed', function() {
-      let places = locationBox.getPlaces();
-      if (places.length == 0) {
+    let places = locationBox.getPlaces();
+    if (places.length == 0) {
+      return;
+    }
+    
+    // Clear any existing markers
+    markers2.forEach(function(marker) {
+      marker.setMap(null);
+    });
+    markers2 = [];
+
+    let bounds = new google.maps.LatLngBounds();
+    places.forEach(function(place) {
+      if (!place.geometry) {
+        console.log("Returned place contains no geometry");
         return;
       }
+
+      // Push a marker to markers2, to display on map
+      markers2.push(new google.maps.Marker({
+        map: map,
+        title: place.name,
+        position: place.geometry.location
+      }));
+
+      // Obtain latitude and longitude for Starting point
+      let latitude = place.geometry.location.lat();
+      let longitude = place.geometry.location.lng();
+
+      // Write current Starting Pt latitude and longitude to database
+      firebase.database().ref("Starting/").set({
+        lat: latitude,
+        lng: longitude
+      });
       
-      markers2.forEach(function(marker) {
-        marker.setMap(null);
-      });
-      markers2 = [];
-
-      let bounds = new google.maps.LatLngBounds();
-      places.forEach(function(place) {
-        if (!place.geometry) {
-          console.log("Returned place contains no geometry");
-          return;
-        }
-
-        markers2.push(new google.maps.Marker({
-          map: map,
-          title: place.name,
-          position: place.geometry.location
-        }));
-
-        let latitude = place.geometry.location.lat();
-        let longitude = place.geometry.location.lng();
-
-        firebase.database().ref("Starting/").set({
-          lat: latitude,
-          lng: longitude
-        });
-          
-          if (place.geometry.viewport) {
-              bounds.union(place.geometry.viewport);
-          } 
-          else {
-              bounds.extend(place.geometry.location);
-          }
-      });
-      map.fitBounds(bounds);
+      if (place.geometry.viewport) {
+        bounds.union(place.geometry.viewport);
+      } 
+      else {
+        bounds.extend(place.geometry.location);
+      }
     });
-
-  console.log(line);
-  let path = new google.maps.Polyline({
-    path: line,
-    strokeColor: '#FF0000',
-    strokeOpacity: 1.0,
-    strokeWeight: 2
+    map.fitBounds(bounds);
   });
-  path.setMap(map);
 }

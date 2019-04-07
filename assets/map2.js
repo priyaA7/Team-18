@@ -5,7 +5,8 @@ function initMap() {
     mapTypeId: "roadmap"
   });
   setMarkers(map);
-  setOrgMarkers(map);
+  setDestMarkers(map);
+  setStartMarkers(map);
 }
 
 function setMarkers(map) { var dbRef= firebase.database().ref('Rentals');
@@ -20,13 +21,24 @@ dbRef.on('child_added', function(snapshot) {
   });
 }
 
-function setOrgMarkers(map) {
-  var locationRef = firebase.database().ref('Location');
-  locationRef.on('child_added', function(snapshot) {
-    var snap = snapshot.val();
+function setDestMarkers(map) {
+  let destRef = firebase.database().ref('Destination/');
+  destRef.on('value', function(snapshot) {
+    let snap = snapshot.val();    
     new google.maps.Marker({
       position: {lat: parseFloat(snap.lat), lng: parseFloat(snap.lng)},
       map: map
-      });
     });
-  }
+  });
+}
+
+function setStartMarkers(map) {
+  let startRef = firebase.database().ref('Starting/');
+  startRef.on('value', function(snapshot) {
+    let snap = snapshot.val();    
+    new google.maps.Marker({
+      position: {lat: parseFloat(snap.lat), lng: parseFloat(snap.lng)},
+      map: map
+    });
+  });
+}
