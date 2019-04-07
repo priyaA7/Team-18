@@ -1,40 +1,53 @@
+/*Stylesheet for search page*/
+
+/*Body design specifications - font and background color*/
 #bodyinfo, html {
   font-family: Arial, Helvetica;
   background-color: lightgray;
 }
 
+/*Specifications for starting position and destination form*/
 #enteredDest, #searchResult2 {
+	/*Display settings*/
     display: block;
     top: 5%;
+	/*Sizing of input form*/
     width: 222px;
     height: 30px;
+	/*Positioning/padding of input form*/
     left: 10px;
+	padding-left: 10px;
+	/*Dont size of temporary text in search*/
     font-size: 16px;
-    padding-left: 10px;
+	/*Border specifications for input element*/
     border: solid;
     border-width: 0.1px;
     border-color: black;
     background-color:white;
 }
 
+/*Positioning of form*/
 #forminput {
     position: absolute;
     top: 70px;
 }
-
+/*'Pedals' logo aligned to center of page (top)*/
 #logo {
     text-align: center;
 }
-
+/*Clicked on links will be color: black with no other decoration modifications*/
 a, a:visited {
     text-decoration: none;
     color: black;
 }
 
+/*Positioning of map on page*/
 #map {
+	/*Positioning of map*/
     position: absolute;
     top: 70px;
     right: 0px;
+	/*Sizing*/
     width: 82.5%;
     height: -moz-calc(100vh - 70px);
     height: -webkit-calc(100vh - 70px);
@@ -43,5 +56,6 @@ a, a:visited {
 }
 
 textarea:focus, #enteredDest:focus, #searchResult2:focus {
+	/*No outline drawn around element in search input form*/
     outline: none;
 }
