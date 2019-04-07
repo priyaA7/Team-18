@@ -1,24 +1,33 @@
+/*Stylesheet for projectindex*/
+
+/* Font specications for body of page*/
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+/*Settings for title text */
 p { 
+	/*Positioning and sizing */
     top: 22.5px;
     width: 466px;
     height: 87px;
+	/*Design element - font and color specications*/
     font-size: 144px;
     color: white;
     -webkit-text-stroke: 0.5px black;
 }
 
+/* Background specications for projectindex.html page*/
 body {
-    background-image: url("../images/background.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-size:100% 100vh;
+    background-image: url("../images/background.jpg"); /* Image used for background */
+    background-repeat: no-repeat; /* Making sure the image covers the page and doesnt repeat*/
+    background-size: cover; /* Background photo is a cover*/
+    background-size:100% 100vh; /* The background will cover the whole page*/
 }
 
+/*Search button settings*/
 #searchButton {
+	/*Positioning and sizing of button*/
     left: 625px;
     top: 50%;
     border: none;
@@ -28,24 +37,26 @@ body {
     padding: 15px 32px;
 }
 
+/*Specfiications for navigation at the top of the page*/
 #navigation {
-    list-style-type: none;
+    list-style-type: none; /*Makes sure naviagtion is not formatted as a list*/
     margin: 0;
     padding: 0;
 }
 
+/*Specifications for when the naviagtion option is selected*/
 #nav_select {
     display: inline;
     font-size: 15px;
 }
-
+/*Specifications for when the naviagtion option is selected*/
 #nav_select a {
     text-decoration: none;
     color: white;
-    text-align: center;
+    text-align: center; /*Navigation centered at top of page*/
     padding: 30px 34px;
 }
-
+/*Specifications for when the naviagtion option is hovered over i.e change of color*/
 #nav_select a:hover {
     color: rgb(187, 187, 187)
 }
