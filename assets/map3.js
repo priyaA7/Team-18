@@ -1,10 +1,10 @@
 function initMap() {
     let map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 12,
-      center: {lat: 49.282730, lng: -123.120735},
+      zoom: 13,
+      center: {lat: 49.2479245, lng: -123.1292579},
       mapTypeId: "roadmap"
     });
-    
+
   setMarkers(map);
 
   let Destination = document.getElementById("enteredDest");
