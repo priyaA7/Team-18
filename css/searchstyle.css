@@ -3,7 +3,7 @@
 /*Body design specifications - font and background color*/
 #bodyinfo, html {
   font-family: Arial, Helvetica;
-  background-color: lightgray;
+  background-color: white;
 }
 
 /*Specifications for starting position and destination form*/
@@ -30,6 +30,7 @@
 #forminput {
     position: absolute;
     top: 70px;
+    left: 1.5%;
 }
 /*'Pedals' logo aligned to center of page (top)*/
 #logo {
