@@ -4,9 +4,6 @@
 
 /*Settings for title text */
 p { 
-	/*Positioning and sizing */
-    width: 466px;
-    height: 87px;
 	/*Design element - font and color specications*/
     font-size: 144px;
     color: white;
