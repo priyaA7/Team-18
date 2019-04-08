@@ -29,8 +29,12 @@
 /*Positioning of form*/
 #forminput {
     position: absolute;
-    top: 70px;
+    float: left;
+    top: 10%;
     left: 1.5%;
+    right: 84.65%;
+    bottom: 80%;
+    z-index: 1;
 }
 /*'Pedals' logo aligned to center of page (top)*/
 #logo {
@@ -46,14 +50,14 @@ a, a:visited {
 #map {
 	/*Positioning of map*/
     position: absolute;
-    top: 70px;
-    right: 0px;
+    top: 10%;
+    right: 1.5%;
 	/*Sizing*/
-    width: 82.5%;
-    height: -moz-calc(100vh - 70px);
-    height: -webkit-calc(100vh - 70px);
-    height: -o-calc(100vh - 70px);
-    height: calc(100vh - 70px);
+    width: 81.5%;
+    height: -moz-calc(100vh - 12%);
+    height: -webkit-calc(100vh - 12%);
+    height: -o-calc(100vh - 12%);
+    height: calc(100vh - 12%);
 }
 
 textarea:focus, #enteredDest:focus, #searchResult2:focus {
